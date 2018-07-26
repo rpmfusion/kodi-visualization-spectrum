@@ -3,7 +3,7 @@
 
 Name:           kodi-visualization-spectrum
 Version:        2.0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Spectrum visualizer for Kodi
 Group:          Applications/Multimedia
 License:        GPLv2+
@@ -49,6 +49,9 @@ find $RPM_BUILD_ROOT%{_datadir}/kodi/addons/ -type f -exec chmod 0644 {} \;
 %{_datadir}/kodi/addons/%{aname}/
 
 %changelog
+* Thu Jul 26 2018 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 2.0.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Tue May 01 2018 Dominic Robinson <github@dcrdev.com> - 2.0.2-1
 - Bump to 2.0.2-1
 
