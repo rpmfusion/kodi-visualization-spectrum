@@ -18,7 +18,7 @@ BuildRequires:  kodi-devel >= %{kodi_version}
 
 Requires:       kodi >= %{kodi_version}
 
-ExclusiveArch:  i686 x86_64
+ExcludeArch:    %{power64}
 
 %description
 %{summary}.
