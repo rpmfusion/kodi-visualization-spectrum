@@ -29,8 +29,6 @@ ExclusiveArch:  i686 x86_64
 # Fix spurious-executable-perm on debug package
 find . -name '*.h' -or -name '*.cpp' | xargs chmod a-x
 
-# Patch incorrect fsf address
-sed -i "s|59 Temple Place - Suite 330, Boston, MA 02111-1307|51 Franklin Street, Fifth Floor, Boston, MA 02110-1335|" src/opengl_spectrum.cpp
 
 %build
 %cmake3 .
