@@ -7,7 +7,7 @@ Release:        3%{?dist}
 Summary:        Spectrum visualizer for Kodi
 License:        GPLv2+
 URL:            https://github.com/xbmc/visualization.spectrum
-Source0:        https://github.com/xbmc/%{aname}/archive/v%{version}/%{aname}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}/%{aname}-%{version}.tar.gz
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
