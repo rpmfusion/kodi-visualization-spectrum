@@ -5,7 +5,6 @@ Name:           kodi-visualization-spectrum
 Version:        2.0.2
 Release:        3%{?dist}
 Summary:        Spectrum visualizer for Kodi
-Group:          Applications/Multimedia
 License:        GPLv2+
 URL:            https://github.com/xbmc/visualization.spectrum
 Source0:        https://github.com/xbmc/%{aname}/archive/v%{version}/%{aname}-%{version}.tar.gz
