@@ -9,7 +9,7 @@ License:        GPLv2+
 URL:            https://github.com/xbmc/visualization.spectrum
 Source0:        %{url}/archive/v%{version}/%{aname}-%{version}.tar.gz
 
-BuildRequires:  cmake
+BuildRequires:  cmake3
 BuildRequires:  gcc-c++
 BuildRequires:  mesa-libGL-devel
 BuildRequires:  mesa-libGLES-devel
@@ -33,7 +33,7 @@ find . -name '*.h' -or -name '*.cpp' | xargs chmod a-x
 sed -i "s|59 Temple Place - Suite 330, Boston, MA 02111-1307|51 Franklin Street, Fifth Floor, Boston, MA 02110-1335|" src/opengl_spectrum.cpp
 
 %build
-%cmake .
+%cmake3 .
 %make_build
 
 %install
