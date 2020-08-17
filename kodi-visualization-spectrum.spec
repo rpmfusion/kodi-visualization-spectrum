@@ -1,6 +1,8 @@
 %global aname visualization.spectrum
 %global kodi_version 18.0
 
+%undefine __cmake_in_source_build
+
 Name:           kodi-visualization-spectrum
 Version:        2.0.3
 Release:        3%{?dist}
@@ -31,11 +33,12 @@ find . -name '*.h' -or -name '*.cpp' | xargs chmod a-x
 
 
 %build
-%cmake3 .
-%make_build
+%cmake3
+%cmake3_build
+
 
 %install
-%make_install
+%cmake3_install
 
 # Fix permissions at installation
 find $RPM_BUILD_ROOT%{_datadir}/kodi/addons/ -type f -exec chmod 0644 {} \;
