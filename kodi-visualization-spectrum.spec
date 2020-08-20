@@ -1,22 +1,24 @@
 %global aname visualization.spectrum
-%global kodi_version 18.0
-
-%undefine __cmake_in_source_build
+%global kodi_version 19.0
+%global kodi_codename Matrix
 
 Name:           kodi-visualization-spectrum
-Version:        2.0.3
-Release:        4%{?dist}
+Version:        3.2.0
+Release:        1%{?dist}
 Summary:        Spectrum visualizer for Kodi
 License:        GPLv2+
 URL:            https://github.com/xbmc/visualization.spectrum
-Source0:        %{url}/archive/v%{version}/%{aname}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}-%{kodi_codename}/%{aname}-%{version}.tar.gz
 
 BuildRequires:  cmake3
 BuildRequires:  gcc-c++
-BuildRequires:  mesa-libGL-devel
-BuildRequires:  mesa-libGLES-devel
-BuildRequires:  mesa-libEGL-devel
 BuildRequires:  kodi-devel >= %{kodi_version}
+BuildRequires:  pkgconfig(glm)
+%ifarch %{arm}
+BuildRequires:  pkgconfig(opengles)
+%else
+BuildRequires:  pkgconfig(opengl)
+%endif
 
 Requires:       kodi >= %{kodi_version}
 
@@ -25,8 +27,9 @@ ExcludeArch:    %{power64}
 %description
 %{summary}.
 
+
 %prep
-%setup -q -n %{aname}-%{version}
+%setup -q -n %{aname}-%{version}-%{kodi_codename}
 
 # Fix spurious-executable-perm on debug package
 find . -name '*.h' -or -name '*.cpp' | xargs chmod a-x
@@ -43,12 +46,17 @@ find . -name '*.h' -or -name '*.cpp' | xargs chmod a-x
 # Fix permissions at installation
 find $RPM_BUILD_ROOT%{_datadir}/kodi/addons/ -type f -exec chmod 0644 {} \;
 
+
 %files
 %license COPYING
 %{_libdir}/kodi/addons/%{aname}/
 %{_datadir}/kodi/addons/%{aname}/
 
+
 %changelog
+* Thu Aug 20 2020 Mohamed El Morabity <melmorabity@fedoraproject.org> - 3.2.0-1
+- Update to 3.2.0 (switch to Matrix branch)
+
 * Tue Aug 18 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 2.0.3-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
