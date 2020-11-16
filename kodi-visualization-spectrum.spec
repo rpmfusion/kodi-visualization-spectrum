@@ -3,7 +3,7 @@
 %global kodi_codename Matrix
 
 Name:           kodi-visualization-spectrum
-Version:        3.2.0
+Version:        3.4.0
 Release:        1%{?dist}
 Summary:        Spectrum visualizer for Kodi
 License:        GPLv2+
@@ -15,7 +15,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  kodi-devel >= %{kodi_version}
 BuildRequires:  pkgconfig(glm)
 %ifarch %{arm} aarch64
-BuildRequires:  mesa-libGLES-devel
+BuildRequires:  libglvnd-devel
 %else
 BuildRequires:  pkgconfig(opengl)
 %endif
@@ -48,12 +48,16 @@ find $RPM_BUILD_ROOT%{_datadir}/kodi/addons/ -type f -exec chmod 0644 {} \;
 
 
 %files
+%doc README.md
 %license COPYING
 %{_libdir}/kodi/addons/%{aname}/
 %{_datadir}/kodi/addons/%{aname}/
 
 
 %changelog
+* Mon Nov 16 2020 Mohamed El Morabity <melmorabity@fedoraproject.org> - 3.4.0-1
+- Update to 3.4.0
+
 * Thu Aug 20 2020 Mohamed El Morabity <melmorabity@fedoraproject.org> - 3.2.0-1
 - Update to 3.2.0 (switch to Matrix branch)
 
