@@ -49,7 +49,7 @@ find $RPM_BUILD_ROOT%{_datadir}/kodi/addons/ -type f -exec chmod 0644 {} \;
 
 %files
 %doc README.md
-%license COPYING
+%license LICENSE.md
 %{_libdir}/kodi/addons/%{aname}/
 %{_datadir}/kodi/addons/%{aname}/
 
