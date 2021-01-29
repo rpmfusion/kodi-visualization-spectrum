@@ -4,7 +4,7 @@
 
 Name:           kodi-visualization-spectrum
 Version:        3.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Spectrum visualizer for Kodi
 License:        GPLv2+
 URL:            https://github.com/xbmc/visualization.spectrum
@@ -55,6 +55,9 @@ find $RPM_BUILD_ROOT%{_datadir}/kodi/addons/ -type f -exec chmod 0644 {} \;
 
 
 %changelog
+* Fri Jan 29 2021 Mohamed El Morabity <melmorabity@fedoraproject.org> - 3.4.0-2
+- Rebuild for Kodi 19 RC1
+
 * Mon Nov 16 2020 Mohamed El Morabity <melmorabity@fedoraproject.org> - 3.4.0-1
 - Update to 3.4.0
 
