@@ -3,8 +3,8 @@
 %global kodi_codename Matrix
 
 Name:           kodi-visualization-spectrum
-Version:        3.4.0
-Release:        5%{?dist}
+Version:        19.0.1
+Release:        1%{?dist}
 Summary:        Spectrum visualizer for Kodi
 License:        GPLv2+
 URL:            https://github.com/xbmc/visualization.spectrum
@@ -13,12 +13,8 @@ Source0:        %{url}/archive/%{version}-%{kodi_codename}/%{aname}-%{version}.t
 BuildRequires:  cmake3
 BuildRequires:  gcc-c++
 BuildRequires:  kodi-devel >= %{kodi_version}
-BuildRequires:  pkgconfig(glm)
-%ifarch %{arm} aarch64
+BuildRequires:  glm-devel
 BuildRequires:  libglvnd-devel
-%else
-BuildRequires:  pkgconfig(opengl)
-%endif
 
 Requires:       kodi >= %{kodi_version}
 
@@ -55,6 +51,9 @@ find $RPM_BUILD_ROOT%{_datadir}/kodi/addons/ -type f -exec chmod 0644 {} \;
 
 
 %changelog
+* Wed Feb 09 2022 Michael Cronenworth <mike@cchtml.com> - 19.0.1-1
+- Update to 19.0.1
+
 * Wed Feb 09 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 3.4.0-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
