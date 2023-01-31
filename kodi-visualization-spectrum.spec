@@ -1,23 +1,23 @@
-%global aname visualization.spectrum
-%global kodi_version 19.0
-%global kodi_codename Matrix
+%global kodi_addon visualization.spectrum
+%global kodi_version 20
+%global kodi_codename Nexus
 
 Name:           kodi-visualization-spectrum
-Version:        19.0.1
-Release:        2%{?dist}
+Version:        20.2.0
+Release:        1%{?dist}
 Summary:        Spectrum visualizer for Kodi
-License:        GPLv2+
-URL:            https://github.com/xbmc/visualization.spectrum
-Source0:        %{url}/archive/%{version}-%{kodi_codename}/%{aname}-%{version}-%{kodi_codename}.tar.gz
+License:        GPL-2.0-or-later
+URL:            https://github.com/xbmc/%{kodi_addon}/
+Source0:        %{url}/archive/%{version}-%{kodi_codename}/%{kodi_addon}-%{version}-%{kodi_codename}.tar.gz
+Source1:        %{name}.metainfo.xml
 
 BuildRequires:  cmake3
 BuildRequires:  gcc-c++
 BuildRequires:  kodi-devel >= %{kodi_version}
 BuildRequires:  glm-devel
-BuildRequires:  libglvnd-devel
-
+BuildRequires:  libappstream-glib
+BuildRequires:  pkgconfig(gl)
 Requires:       kodi >= %{kodi_version}
-
 ExcludeArch:    %{power64}
 
 %description
@@ -25,10 +25,7 @@ ExcludeArch:    %{power64}
 
 
 %prep
-%setup -q -n %{aname}-%{version}-%{kodi_codename}
-
-# Fix spurious-executable-perm on debug package
-find . -name '*.h' -or -name '*.cpp' | xargs chmod a-x
+%setup -q -n %{kodi_addon}-%{version}-%{kodi_codename}
 
 
 %build
@@ -39,18 +36,28 @@ find . -name '*.h' -or -name '*.cpp' | xargs chmod a-x
 %install
 %cmake3_install
 
-# Fix permissions at installation
-find $RPM_BUILD_ROOT%{_datadir}/kodi/addons/ -type f -exec chmod 0644 {} \;
+# Install AppData file
+install -Dpm 0644 %{SOURCE1} $RPM_BUILD_ROOT%{_metainfodir}/%{name}.metainfo.xml
+
+
+%check
+appstream-util validate-relax --nonet $RPM_BUILD_ROOT%{_metainfodir}/%{name}.metainfo.xml
 
 
 %files
 %doc README.md
 %license LICENSE.md
-%{_libdir}/kodi/addons/%{aname}/
-%{_datadir}/kodi/addons/%{aname}/
+%{_libdir}/kodi/addons/%{kodi_addon}/
+%{_datadir}/kodi/addons/%{kodi_addon}/
+%{_metainfodir}/%{name}.metainfo.xml
 
 
 %changelog
+* Sun Jan 29 2023 Mohamed El Morabity <melmorabity@fedoraproject.org> - 20.2.0-1
+- Update to 20.2.0
+- Add AppStream metadata
+- Switch to SPDX license identifiers
+
 * Sun Aug 07 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 19.0.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
   5.1
