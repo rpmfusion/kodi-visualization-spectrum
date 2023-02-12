@@ -4,7 +4,7 @@
   <extends>kodi.desktop</extends>
   <name>Spectrum</name>
   <summary>Visualisation showing a rotating 3D Spectrum Analyzer</summary>
-  <url type="homepage">https://github.com/xbmc/peripheral.joystick/</url>
+  <url type="homepage">https://github.com/xbmc/visualization.spectrum/</url>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
   <update_contact>melmorabity@fedoraproject.org</update_contact>
