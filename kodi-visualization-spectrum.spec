@@ -1,10 +1,10 @@
 %global kodi_addon visualization.spectrum
-%global kodi_version 20
-%global kodi_codename Nexus
+%global kodi_version 21
+%global kodi_codename Omega
 
 Name:           kodi-visualization-spectrum
-Version:        20.2.0
-Release:        6%{?dist}
+Version:        21.0.2
+Release:        1%{?dist}
 Summary:        Spectrum visualizer for Kodi
 License:        GPL-2.0-or-later
 URL:            https://github.com/xbmc/%{kodi_addon}/
@@ -53,6 +53,9 @@ appstream-util validate-relax --nonet $RPM_BUILD_ROOT%{_metainfodir}/%{name}.met
 
 
 %changelog
+* Sat Mar 29 2025 Leigh Scott <leigh123linux@gmail.com> - 21.0.2-1
+- Update to 21.0.2
+
 * Tue Jan 28 2025 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 20.2.0-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
 
