@@ -1,17 +1,17 @@
 %global kodi_addon visualization.spectrum
-%global kodi_version 21
-%global kodi_codename Omega
+%global kodi_version 22
+%global kodi_codename Piers
 
 Name:           kodi-visualization-spectrum
-Version:        21.0.2
-Release:        3%{?dist}
+Version:        22.1.0
+Release:        1%{?dist}
 Summary:        Spectrum visualizer for Kodi
 License:        GPL-2.0-or-later
 URL:            https://github.com/xbmc/%{kodi_addon}/
 Source0:        %{url}/archive/%{version}-%{kodi_codename}/%{kodi_addon}-%{version}-%{kodi_codename}.tar.gz
 Source1:        %{name}.metainfo.xml
 
-BuildRequires:  cmake3
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  kodi-devel >= %{kodi_version}
 BuildRequires:  glm-devel
@@ -29,19 +29,19 @@ ExcludeArch:    %{power64}
 
 
 %build
-%cmake3
-%cmake3_build
+%cmake
+%cmake_build
 
 
 %install
-%cmake3_install
+%cmake_install
 
 # Install AppData file
-install -Dpm 0644 %{SOURCE1} $RPM_BUILD_ROOT%{_metainfodir}/%{name}.metainfo.xml
+install -Dpm 0644 %{SOURCE1} %{buildroot}%{_metainfodir}/%{name}.metainfo.xml
 
 
 %check
-appstream-util validate-relax --nonet $RPM_BUILD_ROOT%{_metainfodir}/%{name}.metainfo.xml
+appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{name}.metainfo.xml
 
 
 %files
@@ -53,6 +53,9 @@ appstream-util validate-relax --nonet $RPM_BUILD_ROOT%{_metainfodir}/%{name}.met
 
 
 %changelog
+* Tue Jun 30 2026 Leigh Scott <leigh123linux@gmail.com> - 22.1.0-1
+- Update for kodi 22
+
 * Mon Feb 02 2026 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 21.0.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
 
