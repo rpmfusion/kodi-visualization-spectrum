@@ -1,5 +1,5 @@
 %global kodi_addon visualization.spectrum
-%global kodi_version 22
+%global kodi_version 22.0
 %global kodi_codename Piers
 
 Name:           kodi-visualization-spectrum
